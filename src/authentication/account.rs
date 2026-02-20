@@ -1,0 +1,12 @@
+/* Account  */
+// post /auth/account/create
+// post /auth/account/reverify
+// put /auth/account/delete
+// post /auth/account/delete
+// get /auth/account/
+// post /auth/account/disable
+// patch /auth/account/change/password
+// patch /auth/account/change/email
+// post /auth/account/verify/{code}
+// post /auth/account/reset_password
+// patch /auth/account/reset_password

@@ -1,4 +1,2 @@
-/* Admin */
-
-/* User Safety */
-// post /safety/report
+pub mod admin;
+pub mod user_safety;

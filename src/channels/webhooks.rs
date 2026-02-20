@@ -1,0 +1,11 @@
+/* Webhooks */
+// post /channels/{target}/webhooks
+// get /channels/{channel_id}/webhooks
+// get /webhooks/{webhook_id}/{token}
+// post /webhooks/{webhook_id}/{token}
+// delete /webhooks/{webhook_id}/{token}
+// patch /webhooks/{webhook_id}/{token}
+// get /webhooks/{webhook_id}
+// delete /webhooks/{webhook_id}
+// patch /webhooks/{webhook_id}
+// post /webhooks/{webhook_id}/{token}/github

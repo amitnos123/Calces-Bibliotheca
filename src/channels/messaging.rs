@@ -1,0 +1,11 @@
+/* Messaging */
+// put /channels/{target}/ack/{message}
+// get /channels/{target}/messages
+// post /channels/{target}/messages
+// post /channels/{target}/search
+// post /channels/{target}/messages/{msg}/pin
+// delete /channels/{target}/messages/{msg}/pin
+// get /channels/{target}/messages/{msg}
+// delete /channels/{target}/messages/{msg}
+// patch /channels/{target}/messages/{msg}
+// delete /channels/{target}/messages/bulk
