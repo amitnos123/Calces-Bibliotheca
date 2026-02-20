@@ -2,7 +2,7 @@
     // pub async fn get_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
     // pub async fn patch_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
 
-use calces_bibliotheca::{self, users};
+use calces_bibliotheca::{self, api::users};
 
 #[tokio::test]
 async fn test_get_users_me() {

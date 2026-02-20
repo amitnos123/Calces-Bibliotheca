@@ -1,0 +1,9 @@
+pub mod core;
+pub mod users;
+pub mod bots;
+pub mod channels;
+pub mod servers;
+pub mod invites;
+pub mod customisation;
+pub mod administration;
+pub mod misc;

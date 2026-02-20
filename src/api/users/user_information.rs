@@ -46,9 +46,20 @@ impl crate::Client {
             super::create_users_url(),
             target
         );
+
+        let mut map: std::collections::HashMap<&str, &str> = std::collections::HashMap::new();
+        map.insert("avatar", "avatar"); //string | null; min length: 1 max length: 128
+        map.insert("badges", "d"); //integer | null ; int32
+        map.insert("display_name", "display_name"); // string | null ; min length: 2 max length: 32 ; ^[^\u200B\n\r]+$
+        map.insert("flags", "flags"); //integer | null ; int32
+        map.insert("profile", "profile"); // DataUserProfile ; nullable
+        map.insert("remove", "remove"); // array object[] ; default: []
+        map.insert("status", "status"); // UserStatus nullable
+
         let rtn = self.reqwest_client.patch(url)
             .header("x-bot-token", self.token.to_owned())
             .header(reqwest::header::CONTENT_TYPE, "application/json")
+            .json(&map)
             .send()
             .await?;
         return Ok(rtn);
