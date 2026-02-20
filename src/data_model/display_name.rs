@@ -8,7 +8,7 @@ impl DisplayName {
     pub fn new(s: &str) -> Result<Self, String> {
         let len = s.len();
         if len < 2 || len > 32 {
-            Err(format!("DisplayName String length must be 2..=128, got {}", len))
+            Err(format!("DisplayName String length must be 2..=32, got {}", len))
         } else {
             let re = Regex::new(r"^[^\u{200B}\n\r]+$").unwrap();
             if !re.is_match(s) {
