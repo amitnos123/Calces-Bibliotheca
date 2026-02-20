@@ -53,7 +53,7 @@ impl crate::Client {
         map.insert("display_name", "display_name"); // string | null ; min length: 2 max length: 32 ; ^[^\u200B\n\r]+$
         map.insert("flags", "flags"); //integer | null ; int32
         map.insert("profile", "profile"); // DataUserProfile ; nullable
-        map.insert("remove", "remove"); // array object[] ; default: []
+        map.insert("remove", "remove"); // array FieldsUser[] ; default: []
         map.insert("status", "status"); // UserStatus nullable
 
         let rtn = self.reqwest_client.patch(url)

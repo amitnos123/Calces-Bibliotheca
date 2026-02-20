@@ -24,3 +24,4 @@ pub struct Client {
 }
 
 pub mod api;
+pub mod data_model;
