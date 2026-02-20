@@ -13,14 +13,42 @@ use reqwest;
 impl crate::Client {
     pub async fn get_users_me(&self) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
-            "{}{}{}{}",
-            crate::BASE_URL,
-            crate::API_ENDPOINT,
-            super::USERS_ENDPOINT,
-            "/@me"
+            "{}/{}",
+            super::create_users_url(),
+            "@me"
         );
         let rtn = self.reqwest_client.get(url)
             .header("x-bot-token", self.token.to_owned())
+            .header(reqwest::header::CONTENT_TYPE, "application/json")
+            .send()
+            .await?;
+        return Ok(rtn);
+    }
+
+    // target = user id
+    pub async fn get_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+        let url = format!(
+            "{}/{}",
+            super::create_users_url(),
+            target
+        );
+        let rtn = self.reqwest_client.get(url)
+            .header("x-bot-token", self.token.to_owned())
+            .header(reqwest::header::CONTENT_TYPE, "application/json")
+            .send()
+            .await?;
+        return Ok(rtn);
+    }
+
+    pub async fn patch_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+        let url = format!(
+            "{}/{}",
+            super::create_users_url(),
+            target
+        );
+        let rtn = self.reqwest_client.patch(url)
+            .header("x-bot-token", self.token.to_owned())
+            .header(reqwest::header::CONTENT_TYPE, "application/json")
             .send()
             .await?;
         return Ok(rtn);
