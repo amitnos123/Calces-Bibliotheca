@@ -25,3 +25,15 @@
 // put /servers/{target}/permissions/{role_id}
 // put /servers/{target}/permissions/default
 // patch /servers/{target}/roles/ranks
+
+pub(crate) const SERVERS_ENDPOINT: &'static str = "/servers"; 
+
+fn create_url() -> String {
+    format!(
+            "{}{}{}{}",
+            "https://",
+            crate::BASE_URL,
+            crate::API_ENDPOINT,
+            SERVERS_ENDPOINT
+        )
+}

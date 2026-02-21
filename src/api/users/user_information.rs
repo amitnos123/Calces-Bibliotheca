@@ -15,7 +15,7 @@ impl crate::Client {
     pub async fn fetch_self(&self) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
-            super::create_users_url(),
+            super::create_url(),
             "@me"
         );
         let rtn = self.reqwest_client.get(url)
@@ -31,7 +31,7 @@ impl crate::Client {
     pub async fn fetch_user(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
-            super::create_users_url(),
+            super::create_url(),
             target
         );
         let rtn = self.reqwest_client.get(url)
@@ -46,7 +46,7 @@ impl crate::Client {
     pub async fn edit_user(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
-            super::create_users_url(),
+            super::create_url(),
             target
         );
 
