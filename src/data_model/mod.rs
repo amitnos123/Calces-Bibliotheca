@@ -4,8 +4,8 @@ pub mod avatar;
 pub mod display_name;
 pub mod data_user_profile;
 
-type Badges = i32;
-type Flags = i32;
+pub type Badges = i32;
+pub type Flags = i32;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum FieldsUser {
@@ -18,7 +18,7 @@ pub enum FieldsUser {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-struct UserStatus {
+pub struct UserStatus {
     presence: Presence,
     text: UserStatusText
 }

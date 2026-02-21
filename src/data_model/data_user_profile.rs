@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
-mod  content;
-mod  background;
+pub mod  content;
+pub mod  background;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct DataUserProfile {
