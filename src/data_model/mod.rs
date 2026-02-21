@@ -6,7 +6,6 @@ pub mod data_user_profile;
 pub mod user_status_text;
 
 pub type Badges = i32;
-// pub type Flags = i32;
 
 #[bitflag::bitflag(i64)]
 #[derive(Clone, Copy, Serialize)]
@@ -53,6 +52,24 @@ pub enum FieldsUser {
     ProfileContent,
     ProfileBackground,
     DisplayName
+}
+
+#[test]
+fn test_fields_user_serialization() {
+    let avatar = FieldsUser::Avatar;
+
+    let json = serde_json::to_string(&avatar).unwrap();
+
+    assert_eq!(json, r#""Avatar""#);
+}
+
+#[test]
+fn test_fields_user_deserialization() {
+    let json = r#""Avatar""#;
+
+    let avatar = serde_json::from_str::<FieldsUser>(json).unwrap();
+
+    assert_eq!(avatar, FieldsUser::Avatar);
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
