@@ -1,6 +1,4 @@
-use reqwest::Error;
-
-pub(crate) const BASE_URL: &'static str = "https://stoat.chat";
+pub(crate) const BASE_URL: &'static str = "stoat.chat";
 pub(crate) const API_ENDPOINT: &'static str = "/api";
 pub(crate) const EVENTS_ENDPOINT: &'static str = "/events";
 pub(crate) const FILES_ENDPOINT: &'static str = "https://cdn.stoatusercontent.com";
