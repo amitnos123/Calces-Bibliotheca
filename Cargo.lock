@@ -46,6 +46,26 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
 
 [[package]]
+name = "bitflag"
+version = "0.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3beac6a55fd5b7b4f4e857cc74d09f8b3e7c063fe147a83e38a76773750fdb1b"
+dependencies = [
+ "bitflag-attr-macros",
+]
+
+[[package]]
+name = "bitflag-attr-macros"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b618aab4883d58a2d2ed1f59d8d9cb2c8c735588f873f4a4b7966626f3fdad50"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "bitflags"
 version = "2.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -67,6 +87,7 @@ checksum = "1e748733b7cbc798e1434b6ac524f0c1ff2ab456fe201501e6497c8417a4fc33"
 name = "calces-bibliotheca"
 version = "0.1.0"
 dependencies = [
+ "bitflag",
  "regex",
  "reqwest",
  "serde",
