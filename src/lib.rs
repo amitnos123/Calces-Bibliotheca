@@ -10,10 +10,10 @@ pub async fn create_client(token: String) -> Result<self::Client, reqwest::Error
     let reqwest_client = reqwest::Client::new();
     let client = Client { reqwest_client, token };
     // First send request to core to check, if can reach server.
-    let _ = client.get_core().await?.error_for_status()?;
+    let _ = client.query_node().await?.error_for_status()?;
 
     // Second send request to users_me to check, if token valid.
-    let _ = client.get_users_me().await?.error_for_status()?;
+    let _ = client.fetch_self().await?.error_for_status()?;
 
     Ok(client)
 }

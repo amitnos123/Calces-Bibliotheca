@@ -1,7 +1,7 @@
 use reqwest;
 impl crate::Client {
     // Query Node get /
-    pub async fn get_core(&self) -> Result<reqwest::Response, reqwest::Error> {
+    pub async fn query_node(&self) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}{}",
             crate::BASE_URL,

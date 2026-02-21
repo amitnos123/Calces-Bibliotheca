@@ -11,7 +11,8 @@
 
 use reqwest;
 impl crate::Client {
-    pub async fn get_users_me(&self) -> Result<reqwest::Response, reqwest::Error> {
+    // update name to Fetch Self​
+    pub async fn fetch_self(&self) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
             super::create_users_url(),
@@ -25,8 +26,9 @@ impl crate::Client {
         return Ok(rtn);
     }
 
+    // update name to Fetch User​
     // target = user id
-    pub async fn get_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+    pub async fn fetch_user(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
             super::create_users_url(),
@@ -40,7 +42,8 @@ impl crate::Client {
         return Ok(rtn);
     }
 
-    pub async fn patch_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+    // update name to Edit User​
+    pub async fn edit_user(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
             super::create_users_url(),
