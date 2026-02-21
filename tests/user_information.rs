@@ -11,7 +11,7 @@ async fn test_get_users_me() {
     let client = calces_bibliotheca::create_client(token).await;
     assert!(client.is_ok());
 
-    let result = client.unwrap().get_users_me().await;
+    let result = client.unwrap().fetch_self().await;
 
     assert!(result.is_ok());
 
@@ -23,7 +23,7 @@ async fn test_get_users_target() {
 
     let client = calces_bibliotheca::create_client(token).await;
 
-    let result = client.unwrap().get_users_target("01KHNTT0EYYFSC1RWS7YTEKQHB").await;
+    let result = client.unwrap().fetch_user("01KHNTT0EYYFSC1RWS7YTEKQHB").await;
 
     println!("{:?}", result);
 
@@ -37,7 +37,7 @@ async fn test_patch_users_target() {
 
     let client = calces_bibliotheca::create_client(token).await;
 
-    let result = client.unwrap().patch_users_target("01KHNTT0EYYFSC1RWS7YTEKQHB").await;
+    let result = client.unwrap().edit_user("01KHNTT0EYYFSC1RWS7YTEKQHB").await;
 
     println!("{:?}", result);
 
