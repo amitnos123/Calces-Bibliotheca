@@ -107,3 +107,8 @@ impl<'de> Deserialize<'de> for UserStatusText {
         UserStatusText::new(&s).map_err(serde::de::Error::custom)
     }
 }
+
+pub struct TooManyRequestsBody {
+    // Milliseconds until calls are replenished
+    retry_after: u16 // Max value expected is 10000
+}
