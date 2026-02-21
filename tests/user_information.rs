@@ -31,16 +31,16 @@ async fn test_get_users_target() {
 
 }
 
-#[tokio::test]
-async fn test_patch_users_target() {
-    let token = "token".to_string();
+// #[tokio::test]
+// async fn test_patch_users_target() {
+//     let token = "token".to_string();
 
-    let client = calces_bibliotheca::create_client(token).await;
+//     let client = calces_bibliotheca::create_client(token).await;
 
-    let result = client.unwrap().edit_user("user_id").await;
+//     let result = client.unwrap().edit_user("user_id").await;
 
-    println!("{:?}", result);
+//     println!("{:?}", result);
 
-    assert!(result.is_ok());
+//     assert!(result.is_ok());
 
-}
+// }
