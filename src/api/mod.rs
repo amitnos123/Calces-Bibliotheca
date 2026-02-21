@@ -6,4 +6,5 @@ pub mod servers;
 pub mod invites;
 pub mod customisation;
 pub mod administration;
+pub mod authentication;
 pub mod misc;
