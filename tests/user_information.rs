@@ -6,7 +6,7 @@ use calces_bibliotheca::{self, api::users};
 
 #[tokio::test]
 async fn test_get_users_me() {
-    let token = "mU_2kVrtLPTHkhK6D3pcPusSZj23o0v6Kadhi8Wk7pL7L6w_4FytaAyfQVfNQfS6".to_string();
+    let token = "token".to_string();
 
     let client = calces_bibliotheca::create_client(token).await;
     assert!(client.is_ok());
@@ -19,11 +19,11 @@ async fn test_get_users_me() {
 
 #[tokio::test]
 async fn test_get_users_target() {
-    let token = "mU_2kVrtLPTHkhK6D3pcPusSZj23o0v6Kadhi8Wk7pL7L6w_4FytaAyfQVfNQfS6".to_string();
+    let token = "token".to_string();
 
     let client = calces_bibliotheca::create_client(token).await;
 
-    let result = client.unwrap().fetch_user("01KHNTT0EYYFSC1RWS7YTEKQHB").await;
+    let result = client.unwrap().fetch_user("user_id").await;
 
     println!("{:?}", result);
 
@@ -33,11 +33,11 @@ async fn test_get_users_target() {
 
 #[tokio::test]
 async fn test_patch_users_target() {
-    let token = "mU_2kVrtLPTHkhK6D3pcPusSZj23o0v6Kadhi8Wk7pL7L6w_4FytaAyfQVfNQfS6".to_string();
+    let token = "token".to_string();
 
     let client = calces_bibliotheca::create_client(token).await;
 
-    let result = client.unwrap().edit_user("01KHNTT0EYYFSC1RWS7YTEKQHB").await;
+    let result = client.unwrap().edit_user("user_id").await;
 
     println!("{:?}", result);
 
