@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 pub mod avatar;
 pub mod display_name;
 pub mod data_user_profile;
-pub mod user_status_text;
+pub mod user_status;
 
 pub type Badges = i32;
 
@@ -72,20 +72,8 @@ fn test_fields_user_deserialization() {
     assert_eq!(avatar, FieldsUser::Avatar);
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub struct UserStatus {
-    presence: Presence,
-    text: user_status_text::UserStatusText
-}
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub enum Presence {
-    Online,
-    Idle,
-    Focus,
-    Busy,
-    Invisible
-}
+
 pub struct TooManyRequestsBody {
     // Milliseconds until calls are replenished
     retry_after: u16 // Max value expected is 10000
