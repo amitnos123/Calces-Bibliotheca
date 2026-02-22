@@ -1,17 +1,7 @@
-/* User Information */
-// get /users/@me
-// get /users/{target}
-// patch /users/{target}
-// get /users/{target}/flags
-// patch /users/@me/username
-// get /users/{target}/default_avatar
-// get /users/{target}/profile
-
-
-
 use reqwest;
+use crate::data_model::{Badges, FieldsUser, Flags, user_status::UserStatus, avatar::Avatar, data_user_profile::DataUserProfile, display_name::DisplayName};
+
 impl crate::Client {
-    // update name to Fetch Self​
     pub async fn fetch_self(&self) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
@@ -26,7 +16,6 @@ impl crate::Client {
         return Ok(rtn);
     }
 
-    // update name to Fetch User​
     // target = user id
     pub async fn fetch_user(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
@@ -42,22 +31,33 @@ impl crate::Client {
         return Ok(rtn);
     }
 
-    // update name to Edit User​
-    pub async fn edit_user(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+    //TODO make tester
+    pub async fn edit_user(
+        &self,
+        target: &str,
+        avatar: Option<Avatar>,
+        badges: Option<Badges>,
+        display_name: Option<DisplayName>,
+        flags: Option<Flags>,
+        profile: Option<DataUserProfile>,
+        remove: Vec<FieldsUser>,
+        status: Option<UserStatus>,
+    ) -> Result<reqwest::Response, reqwest::Error> {
         let url = format!(
             "{}/{}",
             super::create_url(),
             target
         );
 
-        let mut map: std::collections::HashMap<&str, &str> = std::collections::HashMap::new();
-        map.insert("avatar", "avatar"); //string | null; min length: 1 max length: 128
-        map.insert("badges", "d"); //integer | null ; int32
-        map.insert("display_name", "display_name"); // string | null ; min length: 2 max length: 32 ; ^[^\u200B\n\r]+$
-        map.insert("flags", "flags"); //integer | null ; int32
-        map.insert("profile", "profile"); // DataUserProfile ; nullable
-        map.insert("remove", "remove"); // array FieldsUser[] ; default: []
-        map.insert("status", "status"); // UserStatus nullable
+        let body = EditUserRequestBody {
+            avatar,
+            badges,
+            display_name,
+            flags,
+            profile,
+            remove,
+            status,
+        };
 
         let rtn = self.reqwest_client.patch(url)
             .header("x-bot-token", self.token.to_owned())
@@ -116,4 +116,17 @@ impl crate::Client {
             .await?;
         return Ok(rtn);
     }
+
+}
+
+// Helper structure to serialize the request body
+#[derive(serde::Serialize)]
+struct EditUserRequestBody {
+    avatar: Option<Avatar>,
+    badges: Option<Badges>,
+    display_name: Option<DisplayName>,
+    flags: Option<Flags>,
+    profile: Option<DataUserProfile>,
+    remove: Vec<FieldsUser>,
+    status: Option<UserStatus>,
 }
