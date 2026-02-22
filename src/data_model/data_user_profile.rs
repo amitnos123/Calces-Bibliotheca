@@ -4,6 +4,6 @@ pub mod  background;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct DataUserProfile {
-    background: Option<background::Background>,
-    content: Option<content::Content>
+    pub background: Option<background::Background>,
+    pub content: Option<content::Content>
 }
