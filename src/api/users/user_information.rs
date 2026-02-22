@@ -31,7 +31,6 @@ impl crate::Client {
         return Ok(rtn);
     }
 
-    //TODO make tester
     pub async fn edit_user(
         &self,
         target: &str,
