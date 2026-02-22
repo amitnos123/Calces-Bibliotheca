@@ -45,7 +45,6 @@ impl<'de> Deserialize<'de> for DisplayName {
     }
 }
 
-
 #[test]
 fn  test_display_name_regex_fail_1(){
     let r = DisplayName::new("test\nlength\nvalidation\nfail");
@@ -95,5 +94,4 @@ fn test_display_name_deserialization() {
     let display_name = serde_json::from_str::<DisplayName>(json).unwrap();
 
     assert_eq!(display_name, DisplayName("deserialization".to_string()));
-    
 }
