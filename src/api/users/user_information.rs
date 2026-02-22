@@ -62,7 +62,56 @@ impl crate::Client {
         let rtn = self.reqwest_client.patch(url)
             .header("x-bot-token", self.token.to_owned())
             .header(reqwest::header::CONTENT_TYPE, "application/json")
-            .json(&map)
+            .json(&body)
+            .send()
+            .await?;
+        return Ok(rtn);
+    }
+
+    pub async fn fetch_user_flags(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+        let url = format!(
+            "{}/{}/{}",
+            super::create_url(),
+            target,
+            "flags"
+        );
+
+        let rtn = self.reqwest_client.get(url)
+            .header("x-bot-token", self.token.to_owned())
+            .header(reqwest::header::CONTENT_TYPE, "application/json")
+            .send()
+            .await?;
+        return Ok(rtn);
+    }
+
+    pub async fn fetch_default_avatar(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+        let url = format!(
+            "{}/{}/{}",
+            super::create_url(),
+            target,
+            "default_avatar"
+        );
+
+        let rtn = self.reqwest_client.get(url)
+            .header("x-bot-token", self.token.to_owned())
+            .header(reqwest::header::CONTENT_TYPE, "application/json")
+            .send()
+            .await?;
+        return Ok(rtn);
+    }
+
+    //TODO make tester
+    pub async fn fetch_user_profile(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
+        let url = format!(
+            "{}/{}/{}",
+            super::create_url(),
+            target,
+            "profile"
+        );
+
+        let rtn = self.reqwest_client.get(url)
+            .header("x-bot-token", self.token.to_owned())
+            .header(reqwest::header::CONTENT_TYPE, "application/json")
             .send()
             .await?;
         return Ok(rtn);
