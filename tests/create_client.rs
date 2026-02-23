@@ -6,6 +6,10 @@ async fn test_create_client() {
 
     let result = calces_bibliotheca::create_client(token).await;
 
+    if let Err(x) = &result {
+        println!("{}", x)
+    }
+
     assert!(result.is_ok());
 
 }
