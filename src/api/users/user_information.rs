@@ -48,7 +48,7 @@ impl crate::Client {
             target
         );
 
-        let body = EditUserRequestBody {
+        let data = EditUserPayload {
             avatar,
             badges,
             display_name,
@@ -61,7 +61,7 @@ impl crate::Client {
         let rtn = self.reqwest_client.patch(url)
             .header("x-bot-token", self.token.to_owned())
             .header(reqwest::header::CONTENT_TYPE, "application/json")
-            .json(&body)
+            .json(&data)
             .send()
             .await?;
         return Ok(rtn);
@@ -120,7 +120,7 @@ impl crate::Client {
 
 // Helper structure to serialize the request body
 #[derive(serde::Serialize)]
-struct EditUserRequestBody {
+struct EditUserPayload {
     avatar: Option<Avatar>,
     badges: Option<Badges>,
     display_name: Option<DisplayName>,
@@ -128,4 +128,9 @@ struct EditUserRequestBody {
     profile: Option<DataUserProfile>,
     remove: Vec<FieldsUser>,
     status: Option<UserStatus>,
+}
+
+#[test]
+fn test_edit_user_payload_serialization() {
+    //TODO
 }
