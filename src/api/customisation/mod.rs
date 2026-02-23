@@ -1,4 +1,4 @@
-mod emojis;
+pub mod emojis;
 
 pub(crate) const CUSTOMISATION_ENDPOINT: &'static str = "/custom"; 
 
