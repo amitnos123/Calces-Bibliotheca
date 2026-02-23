@@ -19,4 +19,5 @@ jobs:
     - name: Run tests
       env:
             token: ${{ secrets.TEST_TOKEN }}
+            RUST_BACKTRACE: 1
       run: cargo test --verbose
