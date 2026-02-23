@@ -33,7 +33,7 @@ async fn test_get_users_target() {
 
 #[tokio::test]
 async fn test_patch_users_target() {
-    let token = "mU_2kVrtLPTHkhK6D3pcPusSZj23o0v6Kadhi8Wk7pL7L6w_4FytaAyfQVfNQfS6".to_string();
+    let token = "token".to_string();
 
     let client = calces_bibliotheca::create_client(token).await;
 
