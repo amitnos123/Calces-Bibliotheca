@@ -78,3 +78,27 @@ pub struct TooManyRequestsBody {
     // Milliseconds until calls are replenished
     retry_after: u16 // Max value expected is 10000
 }
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub enum FieldsBot {
+    Token,
+    InteractionsURL
+}
+
+#[test]
+fn test_fields_bot_serialization() {
+    let token = FieldsBot::Token;
+
+    let json = serde_json::to_string(&token).unwrap();
+
+    assert_eq!(json, r#""Token""#);
+}
+
+#[test]
+fn test_fields_bot_deserialization() {
+    let json = r#""Token""#;
+
+    let token = serde_json::from_str::<FieldsBot>(json).unwrap();
+
+    assert_eq!(token, FieldsBot::Token);
+}
