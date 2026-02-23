@@ -1,12 +1,8 @@
-    // pub async fn get_users_me(&self) -> Result<reqwest::Response, reqwest::Error> {
-    // pub async fn get_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
-    // pub async fn patch_users_target(&self, target: &str) -> Result<reqwest::Response, reqwest::Error> {
-
 use calces_bibliotheca::{self, api::users, data_model::{Badges, avatar::Avatar, data_user_profile::{background::Background, content::Content}, display_name::{self, DisplayName}, user_status::{self, UserStatus}}};
 
 #[tokio::test]
 async fn test_get_users_me() {
-    let token = "token".to_string();
+    let token = std::env::var("token").unwrap_or_else(|_| "token");
 
     let client = calces_bibliotheca::create_client(token).await;
     assert!(client.is_ok());
@@ -19,7 +15,7 @@ async fn test_get_users_me() {
 
 #[tokio::test]
 async fn test_get_users_target() {
-    let token = "token".to_string();
+    let token = std::env::var("token").unwrap_or_else(|_| "token");
 
     let client = calces_bibliotheca::create_client(token).await;
 
@@ -33,7 +29,7 @@ async fn test_get_users_target() {
 
 #[tokio::test]
 async fn test_patch_users_target() {
-    let token = "token".to_string();
+    let token = std::env::var("token").unwrap_or_else(|_| "token");
 
     let client = calces_bibliotheca::create_client(token).await;
 
@@ -81,7 +77,7 @@ async fn test_patch_users_target() {
 
 #[tokio::test]
 async fn test_fetch_user_flags() {
-    let token = "token".to_string();
+    let token = std::env::var("token").unwrap_or_else(|_| "token");
 
     let client = calces_bibliotheca::create_client(token).await;
 
@@ -95,7 +91,7 @@ async fn test_fetch_user_flags() {
 
 #[tokio::test]
 async fn test_fetch_default_avatar() {
-    let token = "token".to_string();
+    let token = std::env::var("token").unwrap_or_else(|_| "token");
 
     let client = calces_bibliotheca::create_client(token).await;
 
@@ -109,7 +105,7 @@ async fn test_fetch_default_avatar() {
 
 #[tokio::test]
 async fn test_fetch_user_profile() {
-    let token = "token".to_string();
+    let token = std::env::var("token").unwrap_or_else(|_| "token");
 
     let client = calces_bibliotheca::create_client(token).await;
 
