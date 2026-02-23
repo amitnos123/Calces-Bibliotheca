@@ -19,5 +19,6 @@ jobs:
     - name: Run tests
       env:
             token: ${{ secrets.BOT_TOKEN }}
+            user: ${{ secrets.USER_ID }}
             RUST_BACKTRACE: 1
       run: cargo test --verbose

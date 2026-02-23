@@ -30,6 +30,7 @@ async fn test_get_users_target() {
 #[tokio::test]
 async fn test_patch_users_target() {
     let token = std::env::var("token").unwrap_or_else(|_| "token".to_string());
+    let user = std::env::var("user").unwrap_or_else(|_| "user".to_string());
 
     let client = calces_bibliotheca::create_client(token).await;
 
@@ -59,7 +60,7 @@ async fn test_patch_users_target() {
     // ).await;
 
     let result : Result<reqwest::Response, reqwest::Error> = client.unwrap().edit_user(
-        "01KHVQJY2KF2D4VJ399JPB47AE",
+        &user,
         None,
         None,
         None,
@@ -78,11 +79,12 @@ async fn test_patch_users_target() {
 #[tokio::test]
 async fn test_fetch_user_flags() {
     let token = std::env::var("token").unwrap_or_else(|_| "token".to_string());
+    let user = std::env::var("user").unwrap_or_else(|_| "user".to_string());
 
     let client = calces_bibliotheca::create_client(token).await;
 
 
-    let result : Result<reqwest::Response, reqwest::Error> = client.unwrap().fetch_user_flags("target").await;
+    let result : Result<reqwest::Response, reqwest::Error> = client.unwrap().fetch_user_flags(&user).await;
 
     println!("{:?}", result);
 
@@ -92,11 +94,12 @@ async fn test_fetch_user_flags() {
 #[tokio::test]
 async fn test_fetch_default_avatar() {
     let token = std::env::var("token").unwrap_or_else(|_| "token".to_string());
+    let user = std::env::var("user").unwrap_or_else(|_| "user".to_string());
 
     let client = calces_bibliotheca::create_client(token).await;
 
 
-    let result : Result<reqwest::Response, reqwest::Error> = client.unwrap().fetch_default_avatar("target").await;
+    let result : Result<reqwest::Response, reqwest::Error> = client.unwrap().fetch_default_avatar(&user).await;
 
     println!("{:?}", result);
 
@@ -106,11 +109,12 @@ async fn test_fetch_default_avatar() {
 #[tokio::test]
 async fn test_fetch_user_profile() {
     let token = std::env::var("token").unwrap_or_else(|_| "token".to_string());
+    let user = std::env::var("user").unwrap_or_else(|_| "user".to_string());
 
     let client = calces_bibliotheca::create_client(token).await;
 
 
-    let result : Result<reqwest::Response, reqwest::Error> = client.unwrap().fetch_user_profile("target").await;
+    let result : Result<reqwest::Response, reqwest::Error> = client.unwrap().fetch_user_profile(&user).await;
 
     println!("{:?}", result);
 
